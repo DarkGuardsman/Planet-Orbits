@@ -36,13 +36,21 @@ public class DisplayFrame extends JFrame
             system = new StarSystem();
             for (int i = 2; i <= 10; i += 2)
             {
-                system.add(new Planet(-10 * i, -10 * i, i * 50, i * 50, 1));
+                Planet planet = new Planet(-10 * i, -10 * i, i * 50, i * 50 + randomInt(30 * i), 1);
+                planet.renderSize += (int)(Math.random() * 10);
+                planet.renderColor = new Color(randomInt(255), randomInt(255), randomInt(255));
+                system.add(planet);
             }
         }
 
         add(buildCenter());
 
         pack();
+    }
+
+    private int randomInt(int i)
+    {
+        return (int)(Math.random() * i);
     }
 
     protected JPanel buildCenter()
