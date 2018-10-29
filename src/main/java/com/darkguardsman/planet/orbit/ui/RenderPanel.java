@@ -52,7 +52,9 @@ public class RenderPanel extends JPanel
                 g2.drawOval( renderX- (planet.orbitSizeA / 2), renderY - (planet.orbitSizeB / 2), planet.orbitSizeA, planet.orbitSizeB);
 
                 g2.setPaint(planet.renderColor);
-                g2.fillOval(renderX + (int) planet.getX() / 2, renderY + (int) planet.getY() / 2, planet.renderSize, planet.renderSize);
+                int px = (int) planet.getX() / 2;
+                int py = (int) planet.getY() / 2;
+                g2.fillOval(renderX + px - (planet.renderSize / 2), renderY + py - (planet.renderSize / 2), planet.renderSize, planet.renderSize);
             }
         }
     }
