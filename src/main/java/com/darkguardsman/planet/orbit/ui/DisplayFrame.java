@@ -31,6 +31,15 @@ public class DisplayFrame extends JFrame
         setLocation(200, 200);
         setTitle("Visualization - heat pathfinder");
 
+        if (system == null)
+        {
+            system = new StarSystem();
+            for (int i = 2; i <= 10; i += 2)
+            {
+                system.add(new Planet(-25 * i, -25 * i, i * 50, i * 50, 1));
+            }
+        }
+
         add(buildCenter());
 
         pack();
@@ -40,7 +49,7 @@ public class DisplayFrame extends JFrame
     {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        panel.add(renderPanel = new RenderPanel(), BorderLayout.CENTER);
+        panel.add(renderPanel = new RenderPanel(system), BorderLayout.CENTER);
         renderPanel.setMinimumSize(new Dimension(600, 600));
         renderPanel.setPreferredSize(new Dimension(600, 600));
 
@@ -98,10 +107,6 @@ public class DisplayFrame extends JFrame
 
     public void update()
     {
-        if(system == null)
-        {
-            system = new StarSystem();
-            system.add(new Planet(0, 0, 2, 1, 1));
-        }
+        renderPanel.repaint();
     }
 }

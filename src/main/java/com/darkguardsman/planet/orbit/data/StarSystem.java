@@ -15,6 +15,16 @@ public class StarSystem
 
     public void add(Planet planet)
     {
+        planet.starSystem = this;
         planets.add(planet);
+    }
+
+    public void tick()
+    {
+        tick++;
+        if(tick >= Integer.MAX_VALUE - 2)
+        {
+            tick = 0;
+        }
     }
 }

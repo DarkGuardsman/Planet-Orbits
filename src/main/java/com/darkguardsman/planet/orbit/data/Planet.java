@@ -63,10 +63,10 @@ public class Planet
     public void calculateOrbit()
     {
         //https://www.mathsisfun.com/geometry/ellipse-perimeter.html
-        orbitDistance = 2 * Math.PI * Math.sqrt((orbitSizeA * orbitSizeA + orbitSizeB * orbitSizeB) / 2);
+        orbitDistance = 2 * Math.PI * Math.sqrt((orbitSizeA * orbitSizeA + orbitSizeB * orbitSizeB) / 2f);
 
         //Number of steps need to complete an orbit at the speed given
-        orbitSteps = (int)Math.max(1, Math.floor(orbitDistance / orbitSpeed));
+        orbitSteps = (int)Math.max(1, Math.floor(orbitDistance / (float)orbitSpeed));
 
         //Distance to travel each step (smoothed version of speed)
         orbitStepDistance = orbitDistance / orbitSteps;
@@ -79,7 +79,7 @@ public class Planet
 
     public double getProgress()
     {
-        return orbitStepDistance * (currentOrbitTick % orbitSteps) / orbitStepDistance;
+        return (orbitStepDistance * (currentOrbitTick % orbitSteps)) / orbitDistance;
     }
 
 }
