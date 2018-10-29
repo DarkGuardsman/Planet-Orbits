@@ -36,7 +36,7 @@ public class DisplayFrame extends JFrame
             system = new StarSystem();
             for (int i = 2; i <= 10; i += 2)
             {
-                system.add(new Planet(-25 * i, -25 * i, i * 50, i * 50, 1));
+                system.add(new Planet(-10 * i, -10 * i, i * 50, i * 50, 1));
             }
         }
 

@@ -27,8 +27,8 @@ public class RenderPanel extends JPanel
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         //Clear screen
-        //g2.setPaint(Color.BLACK);
-        //g2.fillRect(0, 0, getWidth(), getHeight());
+        g2.setPaint(Color.BLACK);
+        g2.fillRect(0, 0, getWidth(), getHeight());
 
         //Draw outside boarder
         g2.setPaint(Color.GREEN);
@@ -45,11 +45,14 @@ public class RenderPanel extends JPanel
             starSystem.tick();
             for (Planet planet : starSystem.planets)
             {
-                g2.setPaint(Color.GREEN);
-                g2.drawOval(centerX + planet.orbitOffsetX, centerY + planet.orbitOffsetY, planet.orbitSizeA, planet.orbitSizeB);
+                final int renderX = centerX + planet.orbitOffsetX;
+                final int renderY = centerY + planet.orbitOffsetY;
 
-                g2.setPaint(Color.BLUE);
-                g2.fillOval(centerX + planet.orbitOffsetX + (int) planet.getX() / 2, centerY + planet.orbitOffsetY + (int) planet.getY() / 2, 5, 5);
+                g2.setPaint(Color.GREEN);
+                g2.drawOval( renderX- (planet.orbitSizeA / 2), renderY - (planet.orbitSizeB / 2), planet.orbitSizeA, planet.orbitSizeB);
+
+                g2.setPaint(planet.renderColor);
+                g2.fillOval(renderX + (int) planet.getX() / 2, renderY + (int) planet.getY() / 2, planet.renderSize, planet.renderSize);
             }
         }
     }
