@@ -34,9 +34,11 @@ public class RenderPanel extends JPanel
         g2.setPaint(Color.GREEN);
         drawBorder(g2, 1);
 
+        //Get center of render area
         int centerX = getWidth() / 2;
         int centerY = getHeight() / 2;
 
+        //Draw star TODO base off data
         g2.setPaint(Color.YELLOW);
         g2.fillOval(centerX, centerY, 10, 10);
 
@@ -45,12 +47,15 @@ public class RenderPanel extends JPanel
             starSystem.tick();
             for (Planet planet : starSystem.planets)
             {
+                //Get center of orbit path
                 final int renderX = centerX + planet.orbitOffsetX;
                 final int renderY = centerY + planet.orbitOffsetY;
 
+                //Render path
                 g2.setPaint(Color.GREEN);
-                g2.drawOval( renderX- (planet.orbitSizeA / 2), renderY - (planet.orbitSizeB / 2), planet.orbitSizeA, planet.orbitSizeB);
+                g2.drawOval(renderX - (planet.orbitSizeA / 2), renderY - (planet.orbitSizeB / 2), planet.orbitSizeA, planet.orbitSizeB);
 
+                //Render planet
                 g2.setPaint(planet.renderColor);
                 int px = (int) planet.getX() / 2;
                 int py = (int) planet.getY() / 2;
