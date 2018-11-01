@@ -9,22 +9,48 @@ import java.util.List;
  */
 public class StarSystem
 {
-    public final List<Planet> planets = new ArrayList();
+    private final List<OrbitalObjects> planets = new ArrayList();
 
-    public int tick;
-
-    public void add(Planet planet)
-    {
-        planet.starSystem = this;
-        planets.add(planet);
-    }
+    private int tick;
 
     public void tick()
     {
-        tick++;
-        if(tick >= Integer.MAX_VALUE - 2)
+        tick = getTick() + 1;
+        if (getTick() >= Integer.MAX_VALUE - 2)
         {
             tick = 0;
         }
+    }
+
+    /**
+     * Current star update tick. Used to sync
+     * logic and animations.
+     *
+     * @return 0 to (Integer.MAX - 2)
+     */
+    public int getTick()
+    {
+        return tick;
+    }
+
+    /**
+     * List of planets orbiting the star
+     *
+     * @return
+     */
+    public List<OrbitalObjects> getPlanets()
+    {
+        return planets;
+    }
+
+    /**
+     * Called to add an object to orbit the star
+     *
+     * @param planet
+     */
+    public void add(OrbitalObjects planet)
+    {
+        planet.setStarSystem(this);
+        planets.add(planet);
     }
 }

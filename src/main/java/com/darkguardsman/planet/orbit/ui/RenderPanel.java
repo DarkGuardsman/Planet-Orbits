@@ -1,6 +1,6 @@
 package com.darkguardsman.planet.orbit.ui;
 
-import com.darkguardsman.planet.orbit.data.Planet;
+import com.darkguardsman.planet.orbit.data.OrbitalObjects;
 import com.darkguardsman.planet.orbit.data.StarSystem;
 
 import javax.swing.*;
@@ -45,7 +45,7 @@ public class RenderPanel extends JPanel
         if (starSystem != null)
         {
             starSystem.tick();
-            for (Planet planet : starSystem.planets)
+            for (OrbitalObjects planet : starSystem.getPlanets())
             {
                 //Get center of orbit path
                 final int renderX = centerX + planet.orbitOffsetX;

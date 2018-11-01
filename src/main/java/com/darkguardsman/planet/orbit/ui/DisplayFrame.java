@@ -1,6 +1,6 @@
 package com.darkguardsman.planet.orbit.ui;
 
-import com.darkguardsman.planet.orbit.data.Planet;
+import com.darkguardsman.planet.orbit.data.OrbitalObjects;
 import com.darkguardsman.planet.orbit.data.StarSystem;
 
 import javax.swing.*;
@@ -36,7 +36,7 @@ public class DisplayFrame extends JFrame
             system = new StarSystem();
             for (int i = 2; i <= 10; i += 2)
             {
-                Planet planet = new Planet(-10 * i, -10 * i, i * 50, i * 50 + randomInt(30 * i), 1);
+                OrbitalObjects planet = new OrbitalObjects(-10 * i, -10 * i, i * 50, i * 50 + randomInt(30 * i), 1);
                 planet.renderSize += (int)(Math.random() * 10);
                 planet.renderColor = new Color(randomInt(255), randomInt(255), randomInt(255));
                 system.add(planet);
